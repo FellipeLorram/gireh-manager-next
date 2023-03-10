@@ -5,7 +5,7 @@ import { LinkAsButton } from '@/components/linkAsButton'
 import { NotFoundListSearch } from '@/components/notFoundListSearch'
 import { SearchBar } from '@/components/searchBar'
 import { ICustomer } from '@/lib/entities/customer'
-import { useCollection } from '@/lib/hooks'
+import { getCollection } from '@/lib/hooks'
 import { GetServerSideProps } from 'next'
 import { useCallback, useState } from 'react'
 
@@ -14,7 +14,7 @@ interface PageProps {
 }
 
 export async function getServerSideProps(context: GetServerSideProps<PageProps>) {
-  const { list } = useCollection<ICustomer>("customers");
+  const { list } = getCollection<ICustomer>("customers");
 
   const customers = await list();
   return {

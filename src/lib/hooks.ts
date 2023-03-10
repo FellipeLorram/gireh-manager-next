@@ -2,7 +2,7 @@ import { database } from '@/lib/firebase'
 import { collection, doc, getDoc, getDocs, query, QueryConstraint } from 'firebase/firestore'
 import { databaseName } from './entities/dbNames';
 
-export function useCollection<T>(dbName: databaseName): {
+export function getCollection<T>(dbName: databaseName): {
     list: (...queryConstraints: QueryConstraint[]) => Promise<T[]>;
     get: (id: string) => Promise<T>;
 } {
