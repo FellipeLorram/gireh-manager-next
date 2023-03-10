@@ -23,7 +23,7 @@ export async function getServerSideProps(context: GetServerSideProps<PageProps>)
 }
 
 function filterFunction(c: ICustomer, searchValue: string) {
-  return c.name.toLocaleLowerCase().startsWith(searchValue);
+  return c.name.toLocaleLowerCase().startsWith(searchValue.toLocaleLowerCase());
 }
 
 export default function Customers({ customers }: PageProps) {
