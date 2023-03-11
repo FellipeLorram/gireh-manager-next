@@ -1,7 +1,11 @@
+import { NewCustomerForm } from '@/components/forms/newCustomerForm'
+import { LayoutMain } from '@/components/layoutMain'
 import React from 'react'
 
 export default function NewCustomer() {
   return (
-    <div>new-customer</div>
+    <LayoutMain>
+      <NewCustomerForm />
+    </LayoutMain>
   )
 }

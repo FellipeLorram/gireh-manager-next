@@ -41,7 +41,7 @@ export default function Customers({ customers }: PageProps) {
   return (
     <Layout>
       <SearchBar searchFunction={setSearchValue} />
-      <div className='p-4 pb-0 flex items-center'>
+      <div className='sm:hidden p-4 pb-0 flex items-center'>
         <LinkAsButton title="Novo cliente" href='/new-customer' />
       </div>
       {filteredCustomers.length > 0 ? (
