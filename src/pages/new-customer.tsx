@@ -1,5 +1,5 @@
-import { NewCustomerForm } from '@/components/forms/newCustomerForm'
-import { LayoutMain } from '@/components/layoutMain'
+import { NewCustomerForm } from '@/components/form/newCustomerForm'
+import { LayoutMain } from '@/components/layout/layoutMain'
 import React from 'react'
 
 export default function NewCustomer() {

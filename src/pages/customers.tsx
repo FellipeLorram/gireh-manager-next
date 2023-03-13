@@ -1,13 +1,13 @@
-import { CardGrid } from '@/components/cardGrid'
-import { CustomerCard } from '@/components/customerCard'
-import { Layout } from '@/components/layout'
-import { LinkAsButton } from '@/components/linkAsButton'
-import { NotFoundListSearch } from '@/components/notFoundListSearch'
-import { SearchBar } from '@/components/searchBar'
+import { CardGrid } from '@/components/cards/cardGrid'
+import { CustomerCard } from '@/components/cards/customerCard'
+import { Layout } from '@/components/layout/layout'
+import { LinkAsButton } from '@/components/utility/linkAsButton'
+import { NotFoundListSearch } from '@/components/layout/notFoundListSearch'
 import { ICustomer } from '@/lib/entities/customer'
-import { getCollection } from '@/lib/hooks'
 import { GetServerSideProps } from 'next'
 import { useCallback, useState } from 'react'
+import { getCollection } from '@/hooks/getCollection'
+import { SearchBar } from '@/components/layout/searchBar'
 
 interface PageProps {
   customers: ICustomer[]

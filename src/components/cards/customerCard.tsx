@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface Props {
-    id: string;
+    id?: string;
     name: string;
     age?: number;
     inLine: boolean;

@@ -1,13 +1,14 @@
+import { databaseName } from '@/lib/entities/dbNames';
 import { database } from '@/lib/firebase'
-import { collection, doc, getDoc, getDocs, query, QueryConstraint } from 'firebase/firestore'
-import { databaseName } from './entities/dbNames';
+import { addDoc, collection, doc, getDoc, getDocs, orderBy, query, QueryConstraint, setDoc } from 'firebase/firestore'
 
 export function getCollection<T>(dbName: databaseName): {
     list: (...queryConstraints: QueryConstraint[]) => Promise<T[]>;
     get: (id: string) => Promise<T>;
+    add(props: Omit<T, 'id'>): Promise<string>;
 } {
     async function list(...queryConstraints: QueryConstraint[]) {
-        const q = query(collection(database, dbName), ...queryConstraints);
+        const q = query(collection(database, dbName), ...queryConstraints, orderBy("createdAt", "desc"));
         const querySnapshot = await getDocs(q);
 
         const documents: T[] = [];
@@ -18,7 +19,6 @@ export function getCollection<T>(dbName: databaseName): {
             documents.push({
                 id: doc.id,
                 ...data,
-                createdAt: data?.createdAt.toMillis() || 0,
             } as T)
         })
 
@@ -35,8 +35,14 @@ export function getCollection<T>(dbName: databaseName): {
         } as T
     }
 
+    async function add(props: Omit<T, 'id'>) {
+        const docRef = await addDoc(collection(database, dbName), { ...props, createdAt: new Date() });
+        return docRef.id
+    }
+
     return {
         list,
-        get
+        get, 
+        add,
     };
 }

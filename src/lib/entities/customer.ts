@@ -1,7 +1,7 @@
 export interface ICustomer {
-    id: string;
+    id?: string;
     name: string;
-    createdAt: Date;
+    createdAt: number;
     address: string;
     inLine: boolean;
     age: number;
