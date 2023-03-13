@@ -5,7 +5,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
     error?: string;
 }
 
-export const Input = forwardRef<HTMLInputElement, Props>(({ error, label, className, ...props }, ref) => {
+const Input = forwardRef<HTMLInputElement, Props>(({ error, label, className, ...props }, ref) => {
     return (
         <div className={'w-full max-w-[640px] ' + className}>
             <label>
@@ -25,3 +25,6 @@ export const Input = forwardRef<HTMLInputElement, Props>(({ error, label, classN
     )
 })
 
+Input.displayName = "Input";
+
+export { Input }

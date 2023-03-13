@@ -5,7 +5,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
     error?: string;
 }
 
-export const Checkbox = forwardRef<HTMLInputElement, Props>(({ label, error, ...props }, ref) => {
+const Checkbox = forwardRef<HTMLInputElement, Props>(({ label, error, ...props }, ref) => {
     return (
         <div className="inline-flex items-center mb-4">
             <label
@@ -61,3 +61,7 @@ export const Checkbox = forwardRef<HTMLInputElement, Props>(({ label, error, ...
         </div>
     )
 })
+
+Checkbox.displayName = 'Checkbox';
+
+export {Checkbox}
